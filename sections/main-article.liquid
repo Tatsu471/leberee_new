@@ -1,0 +1,267 @@
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+
+
+<article class="article-template blog-main-page">
+<div class="article-template__head-title blog-main-page">
+  <h2 class="blog__title ">NEWS</h2>
+</div>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when '@app' -%}
+        <div class="page-width page-width--narrow">
+          {% render block %}
+        </div>
+
+      {%- when 'title' -%}
+        {%- comment -%} タイトルを独立したグリッド枠で囲みます {%- endcomment -%}
+        <div class="header__grid-wrapper" {{ block.shopify_attributes }}>
+          <header class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+                <h1 class="article-template__title">{{ article.title | escape }}</h1>
+            {%- if block.settings.blog_show_author -%}
+              <span class="caption-with-letter-spacing"><span>{{ article.author }}</span></span>
+            {%- endif -%}
+            <div class="article-template__contents page-width page-width--narrow">
+              {%- if article.tags.size > 0 -%}
+                <div class="article-tags article-card__tags">
+                  {%- for tag in article.tags -%}
+                    <span class="tag-badge article-card__tag">{{ tag }}</span>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <div class="article-tags article-card__tags_none"></div>
+              {%- endif -%}
+
+              {%- if block.settings.blog_show_date -%}
+                <span class="circle-divider caption-with-letter-spacing">
+                  {{- article.published_at | time_tag: format: 'date' -}}
+                </span>
+              {%- endif -%}
+            </div>
+       
+          </header>
+        </div>
+
+      {%- when 'featured_image' -%}
+        {%- if article.image -%}
+          {%- comment -%} 画像も同じグリッド枠に入れることで、デザインの一貫性を保ちます {%- endcomment -%}
+          <div class="header__grid-wrapper" {{ block.shopify_attributes }}>
+            <div class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %} ">
+              <div id="sticky-left" class="article-template__hero-{{ block.settings.image_height }} media"
+                {% if block.settings.image_height == 'adapt' and article.image %}
+                  style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"
+                {% endif %}
+              >
+                <img
+                  srcset="{% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+                          {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
+                          {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+                          {{ article.image | image_url }} {{ article.image.width }}w"
+                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+                  src="{{ article.image | image_url: width: 1100 }}"
+                  loading="eager" width="{{ article.image.width }}" height="{{ article.image.height }}" alt="{{ article.image.alt | escape }}"
+                >
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
+      {%- when 'content' -%}
+        {%- comment -%} コンテンツ部分も独立させることで、順番を自由に入れ替え可能にします {%- endcomment -%}
+        <div class="header__grid-wrapper" {{ block.shopify_attributes }}>
+          <div class="article-template__content page-width page-width--narrow rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {{ article.content }}
+          </div>
+          <div id="stop-marker"></div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</article>
+{%- comment -%} 2. 記事ナビゲーション（PREV / BACK / NEXT） {%- endcomment -%}
+<div class="article-template__wrapper page-width">
+  <div class="article-template__navigation">
+    {% assign current_handle = article.handle %}
+    
+    {%- comment -%} PREV リンクの取得 {%- endcomment -%}
+    {% assign previous_article = nil %}
+    {% for a in blogs[blog.handle].articles %}
+      {% if a.handle == current_handle %}{% break %}{% endif %}
+      {% assign previous_article = a %}
+    {% endfor %}
+
+    <div class="previous-article-link">
+      {% if previous_article %}
+        <a href="{{ previous_article.url }}">PREV</a>
+      {% else %}
+        &nbsp; {%- comment -%} 空でもレイアウトを維持 {%- endcomment -%}
+      {% endif %}
+    </div>
+
+    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
+      {{ 'blogs.article.back_to_blog' | t: title: blog.title | escape }}
+    </a>
+
+    {%- comment -%} NEXT リンクの取得 {%- endcomment -%}
+    {% assign found = false %}
+    {% assign next_article = nil %}
+    {% for a in blogs[blog.handle].articles %}
+      {% if found == true and next_article == nil %}
+        {% assign next_article = a %}
+      {% endif %}
+      {% if a.handle == current_handle %}{% assign found = true %}{% endif %}
+    {% endfor %}
+
+    <div class="next-article-link">
+      {% if next_article %}
+        <a href="{{ next_article.url }}">NEXT</a>
+      {% else %}
+        &nbsp;
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{%- comment -%} 3. コメントセクション {%- endcomment -%}
+{%- if blog.comments_enabled? -%}
+  <div class="article-template__comment-wrapper background-secondary">
+    <div id="comments" class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if article.comments_count > 0 -%}
+        {%- assign anchorId = '#Comments-' | append: article.id -%}
+        <h2 id="Comments-{{ article.id }}" tabindex="-1">
+          {{ 'blogs.article.comments' | t: count: article.comments_count }}
+        </h2>
+        {% paginate article.comments by 5 %}
+          <div class="article-template__comments">
+            {%- for comment in article.comments -%}
+              <article id="{{ comment.id }}" class="article-template__comments-comment">
+                {{ comment.content }}
+                <footer class="right">
+                  <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span>
+                  <span class="caption-with-letter-spacing">{{ comment.created_at | time_tag: format: 'date' }}</span>
+                </footer>
+              </article>
+            {%- endfor -%}
+            {% render 'pagination', paginate: paginate, anchor: anchorId %}
+          </div>
+        {% endpaginate %}
+      {%- endif -%}
+
+      {%- comment -%} コメントフォーム部分（ご提示の通り） {%- endcomment -%}
+      {% form 'new_comment', article %}
+        {%- comment -%} ...フォームの中身... {%- endcomment -%}
+      {% endform %}
+    </div>
+  </div>
+{%- endif -%}
+<!-- //ここで終わり -->
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sticky = document.getElementById('sticky-left');
+  const marker = document.getElementById('stop-marker');
+
+  if (!sticky || !marker) {
+    console.warn('❗ 必要な要素が見つかりませんでした');
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        console.log('📌 stop-marker は表示中 → 固定を停止');
+        sticky.classList.add('stopped');
+      } else {
+        console.log('📍 stop-marker は非表示 → 固定を継続');
+        sticky.classList.remove('stopped');
+      }
+    },
+    {
+      root: null,
+      threshold: 0,
+    }
+  );
+
+  observer.observe(marker);
+});
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-article.name",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "featured_image",
+      "name": "t:sections.main-article.blocks.featured_image.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_height",
+          "options": [
+            {
+              "value": "adapt",
+              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__1.label"
+            },
+            {
+              "value": "small",
+              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__2.label"
+            },
+            {
+              "value": "medium",
+              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__3.label"
+            },
+            {
+              "value": "large",
+              "label": "t:sections.main-article.blocks.featured_image.settings.image_height.options__4.label"
+            }
+          ],
+          "default": "adapt",
+          "label": "t:sections.main-article.blocks.featured_image.settings.image_height.label"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "t:sections.main-article.blocks.title.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "default": true,
+          "label": "t:sections.main-article.blocks.title.settings.blog_show_date.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "default": false,
+          "label": "t:sections.main-article.blocks.title.settings.blog_show_author.label"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "t:sections.main-article.blocks.content.name",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "t:sections.main-article.blocks.share.name",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "share_label",
+          "label": "t:sections.main-article.blocks.share.settings.text.label",
+          "default": "t:sections.main-article.blocks.share.settings.text.default"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

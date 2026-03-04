@@ -1,0 +1,258 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="product-intro page-width page-width--narrow section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {{ page.content }}
+  </div>
+</div>
+<div class="intro-box_base">
+<div class="page-width page-width--narrow intro-box_up">
+  <div class="intro-boxes_up intro-boxes_up--bottoms">
+      <div class="intro-box_up--left">
+         <div class="intro-box_brand-box__img">
+            <img class="utils-sp-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/tanks_series.png?v=1771055836"alt=""width=""height="">
+            <img class="utils-pc-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/tanks_series_sp.png?v=1771059989"alt=""width=""height="">
+         </div>
+       </div>
+      <div class="intro-box_up--right">
+         <div class="intro-box_brand-box__cont">
+            <div class="intro-box_brand-box__desc_box">
+                <div class="intro-box_brand-box__desc_sub">
+               lebereeはホールド力を特に重視して作られたインナーです。<br>
+               そのため、お好みのホールド感をベースに商品を選ばれることをおすすめします。<br><br>
+               サイズ診断はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はぜひご参考の方はぜひ参考になさってくださいませ
+                </div>
+             </div>
+            </div>
+         </div>
+     <div class="intro-box_brands">
+      <div class="intro-box_brand-boxes">
+        <div class="intro-box_brand-box">
+               <a href="https://leberee.net/products/lebelee_standard_cotton" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img intro-box_brand-box__camisoles">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product1.png?v=1769831317"width=""height="" alt="キャミソールシリーズ">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+            Standard-cotton
+            </div>
+            <div class="intro-box_brand-box__subttl">3,980円(税込)
+            </div>
+            {% comment %} <div class=“intro-box_brand-box__desc”>
+         肌に優しいコットン混タイプ。ナイロンポリ素材よりも少し柔らかく薄手になっているので汗ばむ暑い日の着用やお肌の弱い方にもおすすめのモデルです。
+         </div> {% endcomment %}
+         </a>
+        </div>
+            <div class="intro-box_brand-box">
+          <a href="https://leberee.net/products/lebelee_standard" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img intro-box_brand-box__img--bottoms">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product2.png?v=1769831317"width=""height="" alt="ボトムシリーズ">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+            Standard-np
+            </div>
+            <div class="intro-box_brand-box__subttl">3,980円(税込)
+            </div>
+            {% comment %} <div class="intro-box_brand-box__desc">
+            レベリーのスタンダードモデルです。胸をしっかりホールドしながらも、身体のラインを最も美しく見せる胸元の空き、脇のラインにこだわりました。
+            </div> {% endcomment %}
+          </a>
+        </div>
+                <div class="intro-box_brand-box">
+           <a href="https://leberee.net/products/high" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product3.png?v=1769831317"width=""height=""alt="">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+              High-np
+            </div>
+            <div class="intro-box_brand-box__subttl">3,980円(税込)
+            </div>
+             {% comment %} <div class="intro-box_brand-box__attention">
+           8/27(水) 20:00 ~ 発売予定
+            </div> {% endcomment %}
+            {% comment %} <div class="intro-box_brand-box__desc">
+          スタンダードの胸元・脇・背中の空きを控えめにしたモデル。谷間が気になる方やデコルテを見せたくない方におすすめのモデルです。
+            </div> {% endcomment %}
+              </a>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  <div class="intro-boxes_up intro-boxes_up--camisoles">
+
+    {% comment %} 2つ目 {% endcomment %}
+       <div class="intro-box_up--left">
+         <div class="intro-box_brand-box__img">
+            <img class="utils-pc-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/camisole_series.png?v=1771055836"width=""height="" alt="キャミソールシリーズ">
+            <img class="utils-sp-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/camisole_series_sp.png?v=1771059989"width=""height="" alt="キャミソールシリーズ">
+
+         </div>
+       </div>
+      <div class="intro-box_up--right">
+         <div class="intro-box_brand-box__cont">
+            <div class="intro-box_brand-box__desc_box">
+                <div class="intro-box_brand-box__desc_sub">
+                  lebereeはホールド力を特に重視して作られたインナーです。<br>
+                  そのため、お好みのホールド感をベースに商品を選ばれることをおすすめします。<br><br>
+                  イズ診断はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はぜひご参考の方はぜひ参考になさってくださいませ
+                </div>
+             </div>
+            </div>
+         </div>
+          <div class="intro-box_brands">
+      <div class="intro-box_brand-boxes">
+        <div class="intro-box_brand-box">
+               <a href="https://leberee.net/products/lebelee_standard_cotton" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img intro-box_brand-box__camisoles">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product1.png?v=1769831317"width=""height="" alt="キャミソールシリーズ">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+            Standard-cotton
+            </div>
+            <div class="intro-box_brand-box__subttl">
+              3,980円(税込)
+            </div>
+            {% comment %} <div class=“intro-box_brand-box__desc”>
+         肌に優しいコットン混タイプ。ナイロンポリ素材よりも少し柔らかく薄手になっているので汗ばむ暑い日の着用やお肌の弱い方にもおすすめのモデルです。
+         </div> {% endcomment %}
+         </a>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+    <div class="intro-boxes_up intro-boxes_up--boyeleg">
+    {% comment %} 3つ目 {% endcomment %}
+            <div class="intro-box_up--left">
+         <div class="intro-box_brand-box__img">
+            <img class="utils-sp-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/bottoms_series.png?v=1771055836"width=""height="" alt="ボトムシリーズ">
+            <img class="utils-pc-hide" src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/bottoms_series_sp.png?v=1771060168"width=""height="" alt="ボトムシリーズ">
+         </div>
+       </div>
+         <div class="intro-box_up--right">
+         <div class="intro-box_brand-box__cont">
+            <div class="intro-box_brand-box__desc_box">
+                <div class="intro-box_brand-box__desc_sub">
+lebereeはホールド力を特に重視して作られたインナーです。<br>
+そのため、お好みのホールド感をベースに商品を選ばれることをおすすめします。<br>
+<br>
+サイズ診断はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はこれまでのお客様のお声から作られていますのでサイズにお悩みの方はぜひご参考の方はぜひ参考になさってくださいませ
+                </div>
+             </div>
+            </div>
+         </div>
+          <div class="intro-box_brands">
+      <div class="intro-box_brand-boxes">
+        <div class="intro-box_brand-box">
+               <a href="https://leberee.net/products/lebelee_standard_cotton" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img intro-box_brand-box__camisoles">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product1.png?v=1769831317"width=""height="" alt="キャミソールシリーズ">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+            Standard-cotton
+            </div>
+            <div class="intro-box_brand-box__subttl">
+      3,980円(税込)
+            </div>
+            {% comment %} <div class=“intro-box_brand-box__desc”>
+         肌に優しいコットン混タイプ。ナイロンポリ素材よりも少し柔らかく薄手になっているので汗ばむ暑い日の着用やお肌の弱い方にもおすすめのモデルです。
+         </div> {% endcomment %}
+         </a>
+        </div>
+       
+                <div class="intro-box_brand-box">
+           <a href="https://leberee.net/products/high" class="intro-box_brand__link">
+            <div class="intro-box_brand-box__img">
+            <img src="https://cdn.shopify.com/s/files/1/0909/4909/1694/files/product3.png?v=1769831317"width=""height=""alt="">
+            </div>
+            <div class="intro-box_brand-box__ttl">
+              High-np
+            </div>
+            <div class="intro-box_brand-box__subttl">
+        3,980円(税込)
+            </div>
+             {% comment %} <div class="intro-box_brand-box__attention">
+           8/27(水) 20:00 ~ 発売予定
+            </div> {% endcomment %}
+            {% comment %} <div class="intro-box_brand-box__desc">
+          スタンダードの胸元・脇・背中の空きを控えめにしたモデル。谷間が気になる方やデコルテを見せたくない方におすすめのモデルです。
+            </div> {% endcomment %}
+              </a>
+        </div>
+      </div>
+   </div>
+    </div>
+      </div>
+</div>
+<script>
+  document.querySelectorAll('.intro-box_brand__link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const href = this.getAttribute('href');
+
+      fetch(href, { method: 'GET' })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = href; // 正常なページなら遷移
+          } else {
+            window.location.href = '/'; // 404など → トップ
+          }
+        })
+        .catch(() => {
+          window.location.href = '/'; // 通信エラーなど → トップ
+        });
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

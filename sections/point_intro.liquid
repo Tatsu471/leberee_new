@@ -1,0 +1,539 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width page-width--narrow section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {{ page.content }}
+  </div>
+</div>
+<div class="point-box_base">
+ <div class="page-width point-box">
+     <div class="custom-blocks" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+{% for block in section.blocks %}
+  {% assign heading_align = block.settings.heading_alignment | default: 'left' %}
+  {% assign subheading_align = block.settings.subheading_alignment | default: 'left' %}
+  {% assign image_align = block.settings.image_alignment | default: 'center' %}
+  {% assign desc_color = block.settings.description_color | default: '#333' %}
+
+<div class="custom-block custom-block--{{ block.id }}{% if block.settings.icon %} has-icon{% endif %}">
+    {% comment %} {# 見出し（h2） #} {% endcomment %}
+    {% if block.settings.heading %}
+      <div class="block-heading-wrapper text-{{ heading_align }}"
+           style="margin-top: {{ block.settings.heading_margin_top }}px; margin-bottom: {{ block.settings.heading_margin_bottom }}px;">
+        {% if block.settings.icon %}
+          <img src="{{ block.settings.icon | image_url }}" alt="icon" class="block-icon" />
+        {% endif %}
+        <h2 class="block-heading"
+            style="font-size: {{ block.settings.heading_font_size }}px;">{{ block.settings.heading }}</h2>
+      </div>
+    {% endif %}
+    {% comment %} {# 小見出し（h3） #} {% endcomment %}
+    {% if block.settings.subheading %}
+      {% if block.settings.enable_arrow %}
+      <div class="block-subheading-box-check">
+      <h3 class="block-subheading text-{{ subheading_align }}"
+          style="font-size: {{ block.settings.subheading_font_size }}px;
+                 margin-top: {{ block.settings.subheading_margin_top }}px;
+                 margin-bottom: {{ block.settings.subheading_margin_bottom }}px;">{{ block.settings.subheading }}</h3>
+      </div>
+      {% else %}
+      <h3 class="block-subheading text-{{ subheading_align }}"
+          style="font-size: {{ block.settings.subheading_font_size }}px;
+                 margin-top: {{ block.settings.subheading_margin_top }}px;
+                 margin-bottom: {{ block.settings.subheading_margin_bottom }}px;">{{ block.settings.subheading }}</h3>
+          {% endif %}
+    {% endif %}
+
+    {% comment %} {# ↓↓↓ 説明と画像の順序制御部 ↓↓↓ #} {% endcomment %}
+    {% if block.settings.reverse_text_image %}
+      {% comment %} {# 画像 → 説明 の順番 #} {% endcomment %}
+      {% if block.settings.image %}
+        <div class="block-image-wrapper text-{{ image_align }}"><img src="{{ block.settings.image | image_url }}" alt="block image" class="block-image" /></div>
+      {% endif %}
+      {% if block.settings.description %}
+        <p class="block-description text-{{ block.settings.alignment }}"
+           style="color: {{ desc_color }};
+                  font-size: {{ block.settings.description_font_size }}px;
+                  margin-top: {{ block.settings.description_margin_top }}px;
+                  margin-bottom: {{ block.settings.description_margin_bottom }}px;">{{ block.settings.description | escape | newline_to_br }}</p>
+      {% endif %}
+    {% else %}
+      {% comment %} {# 説明 → 画像 の順番 #} {% endcomment %}
+      {% if block.settings.description %}
+        <p class="block-description text-{{ block.settings.alignment }}"
+           style="color: {{ desc_color }};
+                  font-size: {{ block.settings.description_font_size }}px;
+                  margin-top: {{ block.settings.description_margin_top }}px;
+                  margin-bottom: {{ block.settings.description_margin_bottom }}px;">
+          {{ block.settings.description | escape | newline_to_br }}
+        </p>
+      {% endif %}
+      {% if block.settings.image %}
+        <div class="block-image-wrapper text-{{ image_align }}"><img src="{{ block.settings.image | image_url }}" alt="block image" class="block-image" /></div>
+      {% endif %}
+    {% endif %}
+    {% comment %} {# ↑↑↑ 順序制御ここまで ↑↑↑ #} {% endcomment %}
+
+    {% if block.settings.custom_html %}
+      <div class="block-html">
+        {{ block.settings.custom_html }}
+      </div>
+    {% endif %}
+  </div>
+{% endfor %}
+   </div>
+ </div>
+</div>
+{%- style -%} .point-box_base h2:empty, .point-box_base *:not(img,br):empty{
+display:none;
+}
+ .point-box_base h2, .point-box_base h3{
+    font-weight:600;
+    text-transform:uppercase;
+        margin-block: 0;
+ }
+ .point-box_base .text-left { text-align: left; }
+ .point-box_base .text-center { text-align: center; }
+ .point-box_base .text-right { text-align: right; }
+
+  .point-box_base .block-heading-wrapper {
+   display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .custom-block--content_block_Gwj8Pt .block-heading-wrapper{
+ display:block;
+  }
+  .custom-block--content_block_Gwj8Pt .block-heading-wrapper h2{
+    text-transform:initial;
+  }
+  .point-box_base .block-icon {
+    width: 2.3em;
+    height: auto;
+    display: inline-block;
+  }
+
+  .point-box_base .block-description {
+    line-height: 1.8;
+    white-space:normal;
+}
+  }
+  .point-box_base .block-description:empty,.block-heading-wrapper:has(h2:empty),.block-heading-wrapper:has(h3:empty){
+    display:none!important;
+  }
+    .point-box_base .block-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+  }
+  .custom-block.has-icon {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+    @media screen and (min-width: 768px) {
+      .block-html table{
+        width:100%;
+      }
+         .block-html table th{
+          text-align:left;
+         }
+    .custom-block.has-icon .block-description {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    table{
+        margin-inline:auto;
+    }
+}
+    @media screen and (max-width: 768px) {
+      .block-subheading-box-check{
+        margin-top:15px;
+      }
+        .point-box_base .block-icon{
+    width: 1.45em;
+        }
+        .point-box_base .block-heading-wrapper{
+                margin-top: 30px !important;
+    margin-bottom: 5px !important;
+        }
+        .point-box_base .block-heading-wrapper:has(h2:empty){
+              margin-top: 0px !important;
+    margin-bottom: 0px !important;
+            display: block;
+        }
+        .custom-block--content_block_Gwj8Pt .block-heading-wrapper{
+           margin-bottom: 25px !important;
+        }
+     .point-box_base h2 {
+font-size:2rem!important;
+    }
+         .point-box_base h3{
+          font-size:1.6rem!important; 
+                  margin-bottom: 7px !important;
+         }
+         .point-box_base .block-description:not(:empty){
+            font-size: 1rem !important;
+margin-top: 9px !important;
+        margin-bottom: 0px !important;
+         }
+
+  }
+  .registration_link_box{
+    padding-inline:40px;
+    margin-bottom:20px;
+  }
+  .registration_link_box_link{
+      text-decoration:none;
+    trantision:0.3s;
+     position: relative;
+  z-index: 1;
+  }
+  .registration_link_box_link_text:after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;/*テキストからの距離*/
+  width: 0%;/*初期状態では下線非表示*/
+  height: 2px;/*下線の高さ*/
+  background: #000;/*下線の色*/
+  z-index: -1;
+  transition: all 0.4s;/*アニメーション速度*/
+}
+.registration_link_box_link:hover .registration_link_box_link_text:after{
+  width: 100%;/*hover時に表示*/
+}
+
+
+
+  .registration_link_box:hover{
+      
+    trantision:0.3s;
+  }
+  .section-template--25767452017006__point_intro-page-padding h1{
+    display:none;
+  }
+  .block-heading-wrapper:has(h2:empty) img{
+    display:none;
+  }
+  .custom-block:has(.block-subheading-box-check) .block-subheading-box-check .block-subheading {
+  position: relative;
+  display: inline-block; /* 矢印と見出しを横並びに */
+  padding-right: 1.2em; /* 矢印との余白 */
+}
+
+.custom-block:has(.block-subheading-box-check) .block-subheading-box-check .block-subheading::after {
+content: "";
+    position: absolute;
+    top: 15%;
+    right: -10%;
+    width: 26px;
+    height: 26px;
+    border-right: 1.4px solid #606060;
+    border-bottom: 1.4px solid #606060;
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 0.5s ease;
+}
+   @media screen and (max-width: 768px) {
+.custom-block:has(.block-subheading-box-check) .block-subheading-box-check .block-subheading::after{
+      width: 17px;
+    height: 17px;
+
+}
+.registration_link_box{
+padding-inline:0;
+    font-size: 12px;
+}
+ td, th{
+    font-size: 12px !important;
+    padding: .8em .6em !important;
+}
+table{
+          margin-bottom: 10px;
+}
+.registration_link_box{
+          margin-top: 8px;
+        margin-bottom: 0;
+}
+
+  }
+/* 開いた状態 */
+.custom-block:has(.block-subheading-box-check) .block-subheading-box-check .block-subheading.active::after {
+  transform:  rotate(225deg);
+          top: 25%;
+}
+
+/* 折りたたみ部分 */
+.custom-block:has(.block-subheading-box-check) .block-subheading-box-check + .block-description,.custom-block:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper,.custom-block:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper + .block-html {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: max-height 0.45s ease, opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* 開いたとき */
+.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description,.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper,.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper .block-html {
+  max-height: 1000px;
+  opacity: 1;
+  transform: translateY(0);
+}
+   @media screen and (max-width: 768px) {
+.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description,.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper,.custom-block.open:has(.block-subheading-box-check) .block-subheading-box-check + .block-description + .block-image-wrapper .block-html {
+margin-top:15px;
+}
+   }
+{%- endstyle -%}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  const headings = document.querySelectorAll(".block-subheading");
+
+  headings.forEach(heading => {
+    heading.addEventListener("click", function() {
+      const parentBlock = heading.closest(".custom-block");
+      const content = parentBlock.querySelector(".custom-block__content");
+
+      // アコーディオン切り替え
+      heading.classList.toggle("active");
+      parentBlock.classList.toggle("open");
+
+      // スムーズな開閉（display切替ではなくheightアニメーション）
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+  document.querySelectorAll('.block-description').forEach(el => {
+  if (el.textContent.trim() === '') {
+    el.style.display = 'none';
+  }
+});
+});
+</script>
+{% schema %}
+{
+  "name": "ページコンテンツ（ポイントページ）",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Padding settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content_block",
+      "name": "コンテンツブロック",
+      "settings": [
+
+        { "type": "header", "content": "📝 見出し設定" },
+        { "type": "text", "id": "heading", "label": "見出し（h2）" },
+        { "type": "image_picker", "id": "icon", "label": "見出しアイコン画像（見出しテキストがある場合のみ表示）" },
+        {
+          "type": "select",
+          "id": "heading_alignment",
+          "label": "見出しの配置",
+          "options": [
+            { "value": "left", "label": "左寄せ" },
+            { "value": "center", "label": "中央寄せ" },
+            { "value": "right", "label": "右寄せ" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "min": 12,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "label": "見出しフォントサイズ",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "heading_margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "見出し上余白",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "heading_margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "見出し下余白",
+          "default": 12
+        },
+
+        { "type": "header", "content": "🔹 小見出し設定" },
+        { "type": "text", "id": "subheading", "label": "小見出し（h3）" },
+         {
+      "type": "checkbox",
+      "id": "enable_arrow",
+      "label": "h3見出しに矢印を表示する",
+      "default": false
+    },
+        {
+          "type": "select",
+          "id": "subheading_alignment",
+          "label": "小見出しの配置",
+          "options": [
+            { "value": "left", "label": "左寄せ" },
+            { "value": "center", "label": "中央寄せ" },
+            { "value": "right", "label": "右寄せ" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "range",
+          "id": "subheading_font_size",
+          "min": 10,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "label": "小見出しフォントサイズ",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "subheading_margin_top",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "小見出し上余白",
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "subheading_margin_bottom",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "小見出し下余白",
+          "default": 12
+        },
+
+        { "type": "header", "content": "💬 説明テキスト設定" },
+        { "type": "textarea", "id": "description", "label": "説明テキスト" },
+        {
+  "type": "checkbox",
+  "id": "reverse_text_image",
+  "label": "説明と画像の順序を入れ替える（画像 → 説明）",
+  "default": false
+},
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "説明テキストの配置",
+          "options": [
+            { "value": "left", "label": "左寄せ" },
+            { "value": "center", "label": "中央寄せ" },
+            { "value": "right", "label": "右寄せ" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "説明テキストの色",
+          "default": "#333333"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "min": 10,
+          "max": 36,
+          "step": 1,
+          "unit": "px",
+          "label": "説明フォントサイズ",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "description_margin_top",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "説明上余白",
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "description_margin_bottom",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "説明下余白",
+          "default": 12
+        },
+
+        { "type": "header", "content": "🖼 画像設定" },
+        { "type": "image_picker", "id": "image", "label": "画像" },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "画像の配置",
+          "options": [
+            { "value": "left", "label": "左寄せ" },
+            { "value": "center", "label": "中央寄せ" },
+            { "value": "right", "label": "右寄せ" }
+          ],
+          "default": "center"
+        },
+
+        { "type": "header", "content": "💡 自由HTML" },
+        { "type": "html", "id": "custom_html", "label": "自由HTML" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    { "name": "ページコンテンツ（ポイントページ）" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+<div class="category-accordion">
+  <div class="category-accordion__header">
+    <h2 class="category-accordion__title">Category</h2>
+  </div>
+
+  <div class="category-accordion__content">
+    <ul class="category-list">
+    {%- for link in linklists['category'].links -%}
+      <li class="category-item{% if link.links.size > 0 %} has-children{% endif %}">
+        <div class="category-item__header">
+          <a href="#{{ link.title }}" class="category-item__link">{{ link.title }}</a>
+          {%- if link.links.size > 0 -%}
+            <button type="button" class="category-item__toggle" aria-expanded="false">
+              <span class="icon-plus">+</span>
+              <span class="icon-minus">ー</span>
+            </button>
+          {%- endif -%}
+        </div>
+
+        {%- if link.links.size > 0 -%}
+          <ul class="subcategory-list" >
+            {%- for childlink in link.links -%}
+              <li class="subcategory-item">
+                <a href="{{ childlink.url }}" class="subcategory-link">{{ childlink.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+    </ul>
+  </div>
+</div>

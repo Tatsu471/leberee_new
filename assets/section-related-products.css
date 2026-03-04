@@ -1,0 +1,15 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+  font-size:2.4rem;
+  line-height:calc(48 / 24);
+  margin-bottom:2rem;
+}
+
+@media screen and (max-width: 768px) {
+ font-size:clamp(1.7600rem, 4.6819vw + 0.0043rem, 3.6000rem);
+   line-height:calc(60 / 36);
+}

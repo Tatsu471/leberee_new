@@ -1,0 +1,106 @@
+{% assign collection = collections[section.settings.collection] %}
+
+<section class="ranking-section page-width">
+  <h2 class="section-title">{{ section.settings.title }}</h2>
+
+  <div class="ranking-grid columns-{{ section.settings.columns }}">
+    {% for product in collections[section.settings.collection].products limit: section.settings.products_to_show %}
+      <div class="ranking-card">
+        <a href="{{ product.url }}">
+       <div class="product-information__image" style="position:relative;">
+        <div class="ranking-number">{{ forloop.index }}</div>
+
+             {% if product.featured_image %}
+            <a href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: 600 | image_tag }}
+            </a>
+          {% else %}
+             {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+              </div>
+      <div class="product-information">
+            <div class="product-card">
+            {% if product.tags contains 'new' %}
+              <span class="badge badge--new">NEW</span>
+            {% endif %}
+          
+            {% if product.inventory_quantity < 5 and product.available %}
+              <span class="badge badge--low-stock">残りわずか</span>
+            {% endif %}
+          </div>  
+        <p class="product-title">{{ product.title }}</p>
+      </div>
+          <p class="product-price">{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+<style>
+  .ranking-grid {
+  display: grid;
+gap: 3.2rem 1.2rem;
+    margin-bottom:6rem;
+}
+
+.columns-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.columns-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+  @media (max-width:768px){
+      .ranking-grid {
+  display: grid;
+    gap: 2.4rem 1.2rem;
+    margin-bottom:8rem;
+}
+
+.columns-4 {
+  grid-template-columns: repeat(2, 1fr);
+} 
+  }
+</style>
+{% schema %}
+{
+  "name": "ランキングセクション",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "セクションタイトル",
+      "default": "人気ランキング"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "表示するコレクション"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "表示件数",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    },
+    {
+  "type": "select",
+  "id": "columns",
+  "label": "表示列数（PC）",
+  "options": [
+    { "value": "2", "label": "2列" },
+    { "value": "3", "label": "3列" },
+    { "value": "4", "label": "4列" }
+  ],
+  "default": "4"
+}
+  ]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+<script>
+  let pointhistory_shopdomain = '{{ shop.permanent_domain }}';
+  let pointhistory_cs_id = '{{ customer.id }}';
+  let pointhistory_csemail = '{{ customer.email  }}';
+  let pointhistory_csfirst_name = '{{ customer.first_name  }}';
+  let pointhistory_cslast_name = '{{ customer.last_name  }}';
+</script>
+
+{%- if customer.id -%}
+  <div
+    id='dokopoiPointHistory'
+    class='dokopoi_customer page-width dokopoi_account'
+    style='display:none;'
+  >
+    <h2>ポイント履歴</h2>
+
+    <table class='order-history' role='table' id='history'>
+      <thead class='dokopoiTheadClass' id='dokopoiTheadId' role='rowgroup'>
+        <tr class='dokopoiTrClass' id='dokopoiTrId' role='row'>
+          <th>注文</th>
+          <th id='ColumnOrderDate' scope='col' role='columnheader'>購入日</th>
+          <th id='ColumnOrderSt' scope='col' role='columnheader'>ステータス</th>
+          <th id='ColumnOrderPoint' scope='col' role='columnheader'>
+            ポイント
+          </th>
+          <th id='ColumnOrderLimitDate' scope='col' role='columnheader'>
+            有効期限
+          </th>
+          <th id='ColumnPointBikou' scope='col' role='columnpointbikou'>
+            備考
+          </th>
+        </tr>
+      </thead>
+       <tbody></tbody>
+    </table>
+        <div id='dokopoiPointHistoryPageNate' style='display:none;'>
+      <button id='dokopoiBackPageNate' onClick='backPageNate()'>←</button>
+      <button id='dokopoiPrevPageNate' onClick='prevPageNate()'>→</button>
+    </div>
+  </div>
+  <div
+    id='dokopoiPointHistoryNone'
+    class='dokopoi_customer page-width dokopoi_account'
+    style='display:none; text-align:center;'
+  >
+    <p id='dokopoiLoginMidashi'>ポイント履歴はありません</p>
+  </div>
+{%- else -%}
+  <div
+    id='dokopoiPointHistory'
+    class='dokopoi_customer page-width dokopoi_account'
+    style='display:none; text-align:center;'
+  >
+    <p id='dokopoiLoginMidashi' for='point'>
+      ログインするとポイント履歴が確認できます
+    </p>
+
+    <a
+      href='/account/login?return_url=%2Faccount'
+      class='cart__checkout-button button'
+      id='dokopoiLoginButtonId'
+      >ログインはこちらから</a
+    >
+  </div>
+{%- endif -%}
+{{ 'dokopoi-css.css' | asset_url | stylesheet_tag }}

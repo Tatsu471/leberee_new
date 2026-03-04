@@ -1,0 +1,5 @@
+
+.multirow_diagnosis .image-with-text__content,
+.multirow_diagnosis .image-with-text__media-item .placeholder-svg{
+    border-radius: 0 !important;
+}

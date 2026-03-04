@@ -1,0 +1,182 @@
+{% comment %}
+  Renders product variant options in table format and synchronizes with Shopify's variant JS logic
+  Based on Sense default structure and behaviors.
+{% endcomment %}
+
+<div class="variant-selects-wrapper"> 
+  <table class="variant-table variant-tables">
+    {%- liquid
+      assign color_option = null
+      assign size_option = null
+      for option in product.options_with_values
+        assign option_name_down = option.name | downcase
+           if option_name_down == 'color' or option_name_down == 'colour' or option_name_down == '色'
+          assign color_option = option
+        elsif option_name_down == 'size'
+          assign size_option = option
+        endif
+      endfor
+    -%}
+    <thead>
+      <tr>
+        {% comment %} <th class="colors">Color</th> {% endcomment %}
+        {% if size_option %}
+          {% for size in size_option.values %}
+            {% comment %} <th class="size-{{ forloop.index }}">Size</th> {% endcomment %}
+          {% endfor %}
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% if color_option %}
+        {% for color in color_option.values %}
+          <tr>
+            <td class="color-cell">
+              {% assign color_down = color | downcase %}
+              <div class="color-cell-content{% if color_down == 'white' or color_down == 'ホワイト' %} is-white{% endif %}">
+                {%- liquid
+                  assign color_value_obj = null
+                  for value in color_option.values
+                    if value == color
+                      assign color_value_obj = value
+                      break
+                    endif
+                  endfor
+                  
+                  if color_value_obj.swatch
+                    render 'swatch', swatch: color_value_obj.swatch, shape: 'circle'
+                  endif
+                -%}
+                <span>{{ color }}</span>
+              </div>
+            </td>
+            {% if size_option %}
+              {% for size in size_option.values %}
+                {%- liquid
+                  assign variant = null
+                  for v in product.variants
+                    assign match_color = false
+                    assign match_size = false
+                    
+                    # Check Color
+                    if color_option.position == 1
+                      if v.option1 == color
+                        assign match_color = true
+                      endif
+                    elsif color_option.position == 2
+                      if v.option2 == color
+                        assign match_color = true
+                      endif
+                    elsif color_option.position == 3
+                      if v.option3 == color
+                        assign match_color = true
+                      endif
+                    endif
+                    
+                    # Check Size
+                    if size_option.position == 1
+                      if v.option1 == size
+                        assign match_size = true
+                      endif
+                    elsif size_option.position == 2
+                      if v.option2 == size
+                        assign match_size = true
+                      endif
+                    elsif size_option.position == 3
+                      if v.option3 == size
+                        assign match_size = true
+                      endif
+                    endif
+
+                    if match_color and match_size
+                      assign variant = v
+                      break
+                    endif
+                  endfor
+                -%}
+                <td class="size-cell">
+                  {% if variant %}
+                    <input
+                      type="radio"
+                      name="id"
+                      value="{{ variant.id }}"
+                      id="{{ section.id }}-{{ variant.id }}"
+                      form="product-form-{{ section.id }}"
+                      {% unless variant.available %}disabled class="variant-radio disabled"{% else %}class="variant-radio"{% endunless %}
+                    >
+                    <label
+                      class="variant-label{% unless variant.available %} unavailable{% endunless %}"
+                      for="{{ section.id }}-{{ variant.id }}"
+                      data-product-url="{{ variant.url }}"
+                    >
+                      {% if variant.available %}
+                        {{ size }}
+                      {% else %}
+                        <s>{{ size }}</s>
+                        {% comment %} <span class="notify-icon">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.1022 0.786571C13.2413 0.626553 13.4381 0.528326 13.6496 0.513473C13.861 0.498619 14.0696 0.568354 14.2297 0.707355C15.2639 1.60568 16.0948 2.71426 16.6671 3.95921C16.7557 4.15211 16.7642 4.37235 16.6905 4.57148C16.6169 4.77061 16.4672 4.93231 16.2744 5.02102C16.0816 5.10973 15.8615 5.11817 15.6625 5.04449C15.4635 4.97081 15.3019 4.82105 15.2133 4.62814C14.7365 3.58983 14.0441 2.66511 13.1821 1.9156C13.0221 1.77654 12.9238 1.5796 12.9088 1.36804C12.8938 1.15649 12.9634 0.946836 13.1022 0.786571ZM3.25436 0.707355C3.41448 0.568141 3.62331 0.498278 3.83491 0.513134C4.04651 0.52799 4.24355 0.626348 4.38268 0.786571C4.5218 0.946794 4.59162 1.15576 4.57678 1.36749C4.56193 1.57922 4.46363 1.77638 4.30351 1.9156C3.44156 2.66511 2.74913 3.58983 2.27237 4.62814C2.22976 4.7255 2.16818 4.81338 2.09125 4.88667C2.01432 4.95995 1.92356 5.01716 1.82429 5.05496C1.72501 5.09276 1.6192 5.11039 1.51304 5.10682C1.40688 5.10325 1.3025 5.07855 1.20598 5.03417C1.10947 4.98979 1.02275 4.92661 0.950909 4.84833C0.879063 4.77005 0.823524 4.67822 0.787534 4.57822C0.751545 4.47822 0.735826 4.37205 0.741295 4.26591C0.746765 4.15976 0.773313 4.05577 0.819391 3.96001C1.39088 2.715 2.22097 1.60615 3.25436 0.707355ZM10.5305 14.114C11.2222 14.114 11.5876 14.9334 11.1262 15.4487C10.8262 15.784 10.4589 16.0523 10.0483 16.2359C9.6377 16.4196 9.19299 16.5145 8.74323 16.5145C8.29346 16.5145 7.84875 16.4196 7.43814 16.2359C7.02752 16.0523 6.66023 15.784 6.36024 15.4487C5.91883 14.9558 6.23389 14.1853 6.86722 14.1196L6.95519 14.1148L10.5305 14.114ZM8.74323 0.511315C9.82916 0.511315 10.7472 1.23386 11.0422 2.22446L11.079 2.36129L11.0854 2.39569C11.9671 2.89316 12.7184 3.59262 13.2777 4.43674C13.8371 5.28086 14.1885 6.24559 14.3033 7.25187L14.3257 7.48151L14.3409 7.71276V10.058L14.3576 10.1669C14.4671 10.7564 14.7932 11.2836 15.2717 11.6447L15.4052 11.7384L15.5347 11.8176C16.2225 12.2073 15.9826 13.2307 15.2333 13.3091L15.1405 13.3139H2.34594C1.52389 13.3139 1.23681 12.2225 1.95171 11.8176C2.2564 11.645 2.51967 11.4079 2.72301 11.1227C2.92636 10.8375 3.06487 10.5113 3.12881 10.1669L3.1456 10.0524L3.1464 7.67595C3.19516 6.63085 3.49918 5.61363 4.03185 4.71333C4.56453 3.81304 5.30962 3.05711 6.20190 2.51172L6.40022 2.39489L6.40822 2.36049C6.52102 1.88185 6.77801 1.44943 7.14442 1.12171C7.51084 0.793994 7.969 0.586787 8.45695 0.528119L8.60249 0.514516L8.74323 0.511315Z" fill="#232323"/>
+</svg>
+                    </span> {% endcomment %}
+                  {% endif %}
+                </label>
+              {% else %}
+                <span class="not-found">-</span>
+              {% endif %}
+            </td>
+          {% endfor %}
+        {% endif %}
+          </tr>
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+
+  <script type="application/json" data-product>
+    {{ product | json }}
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // ✅ [1] variantクエリパラメータを消して「URLによる選択」を防ぐ
+    const cleanUrl = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, '', cleanUrl);
+   // ✅ [2] 初期選択状態をすべて解除（ShopifyのJSが走った後にやる）
+    setTimeout(() => {
+      const radios = document.querySelectorAll('.variant-radio');
+      radios.forEach((radio) => {
+        radio.checked = false;
+      });
+    }, 50); // 少し遅らせることで、ShopifyのJSが反映されたあとに上書き
+  // ✅ ページ内に複数の variant-selects がある場合でも、最初の1つだけに絞る
+  const selectsWrapper = document.querySelector('variant-selects'); // ← querySelector（最初の1つだけ取得）
+  if (!selectsWrapper) return;
+      const radios = document.querySelectorAll('.variant-radio');
+    const url = selectsWrapper?.dataset?.url;
+   document.addEventListener('variant:change', (e) => {
+  console.log('variant:change fired', e.detail.variantId);
+});
+    radios.forEach((radio) => {
+      radio.addEventListener('change', function () {
+        if (radio.checked) {
+          const variantId = radio.value;
+          const productUrl = radio.closest('label')?.dataset?.productUrl || url;
+
+  
+          // variant changeイベントを発火させる（JSに認識させる）
+          document.dispatchEvent(new CustomEvent('variant:change', {
+            detail: {
+              variantId: variantId
+            }
+          }));
+
+          // DOM更新をトリガーするためにfetchするならここに書く
+          // 例: メディアギャラリー更新や価格更新など
+        }
+        
+      });
+    });
+
+  });
+ 
+</script>
+</div>

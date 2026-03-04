@@ -1,0 +1,31 @@
+
+  <script>
+  let remaining_shopdomain = "{{ shop.permanent_domain }}"
+  let remaining_cs_id = "{{ customer.id }}"
+  let remaining_csemail = "{{ customer.email  }}"
+  let remaining_csfirst_name = "{{ customer.first_name  }}"
+  let remaining_cslast_name = "{{ customer.last_name  }}"
+
+</script>
+
+    {%- if customer.id -%}
+  <div class="dokopoi_customer page-width dokopoi_account">
+  <div id="dokopoiRemainingPointBlock" style="display:none; text-align:left;">
+
+  <div id="dokopoiPointInner">
+    <span id="dokopoiRemainingPointLabel">現在の保有ポイント</span>
+    <span id="dokopoiRemainingPoint"></span>
+    <span id="dokopoiRemainingPointSymbol">P</span>
+  </div>
+</div>
+</div>
+  {%- else -%}
+
+  <div id="dokopoiRemainingPointBlock" class="dokopoi_customer page-width dokopoi_account" style="display:none; text-align:center;">
+    <p id="dokopoiLoginMidashi" for="point">ログインすると現在の保有ポイントが確認できます</p>
+    <a href="/account/login?return_url=%2Faccount" class="cart__checkout-button button" id="dokopoiLoginButtonId">ログインはこちらから</a>
+</div>
+
+      {%- endif -%}
+
+{{ 'dokopoi-css.css' | asset_url | stylesheet_tag }}

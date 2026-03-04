@@ -1,0 +1,34 @@
+
+.multirow_diagnosis .image-with-text__content,
+.multirow_diagnosis .image-with-text__media-item .placeholder-svg{
+    border-radius: 0 !important;
+}
+.c-renewal_leberee-midashi_title {
+    color:#555;
+    font-family: var(--font-body-family);
+    font-size: 2rem;
+    letter-spacing: .02em;
+    line-height: calc(48 / 24);
+    text-transform:uppercase;
+}
+.c-renewal_leberee-midashi_title.image-with-text__heading{
+    margin-bottom: 1.8rem;
+    letter-spacing:0.05em;
+}
+ @media screen and (max-width: 768px) {
+.c-renewal_leberee-midashi_title {
+  
+  font-size: clamp(16.8px, 4.885vw - 1.521px, 34px);
+    letter-spacing: .02em;
+    line-height: calc(48 / 36);
+    text-transform:uppercase;
+    margin-bottom:15.56px
+}
+.c-renewal_leberee-midashi_title.image-with-text__heading{
+    margin-bottom:0;
+}
+ }
+
+.multirow_diagnosis .image-with-text.collapse-corners:not(.image-with-text--overlap) .image-with-text__grid--reverse .image-with-text__media-item:after{
+box-shadow:none;
+}

@@ -1,0 +1,385 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+<!-- //これは診断ページ -->
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="diagnosis page-width page-width--narrow section-{{ section.id }}-padding">
+  <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {{ page.title | escape }}
+  </h1>
+  <div class="rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {{ page.content }}
+  </div>
+</div>
+<div class="diagnosis_steps page-width page-width--narrow diagnosis_steps diagnosis_steps_box">
+<div class="diagnosis_step__wrapper diagnosis_step_box__wrapper">
+<div class="diagnosis_step diagnosis_step_box">
+      {% assign step_count = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'option_block' %}
+          {% assign step_count = step_count | plus: 1 %}
+          <div class="diagnosis_step__inner diagnosis_step_box__inner js-diagnosis_step--{{ step_count }}">
+            {% if step_count == 2 %}
+              {% comment %} <div class="step_selected_info" id="step-selected-info-2"></div> {% endcomment %}
+            {% elsif step_count == 3 %}
+              {% comment %} <div class="step_selected_info" id="step-selected-info-3"></div> {% endcomment %}
+            {% endif %}
+            <div class="diagnosis_step__selected" id="{% if step_count == 1 %}selected-text-1{% elsif step_count == 2 %}selected-text-2{% else %}selected-text-3{% endif %}"></div>
+            <div class="diagnosis_step__ttl_box js-diagnosis_step-ttl--{{ step_count }}" data-step="{{ step_count }}">
+              <div class="diagnosis_step__sub-title">STEP{{ step_count }}</div>
+              <div class="diagnosis_step__title">{{ block.settings.title }}</div>
+            </div>
+            <div class="diagnosis_step__contents js-diagnosis_step-cont--{{ step_count }}">
+              <ul class="diagnosis_step__contents--lists">
+                {% if block.settings.option_1 != blank %}
+                  <li class="diagnosis_step__contents--list"><span>{{ block.settings.option_1 }}</span></li>
+                {% endif %}
+                {% if block.settings.option_2 != blank %}
+                  <li class="diagnosis_step__contents--list"><span>{{ block.settings.option_2 }}</span></li>
+                {% endif %}
+                {% if block.settings.option_3 != blank %}
+                  <li class="diagnosis_step__contents--list"><span>{{ block.settings.option_3 }}</span></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+</div>
+  <div class="diagnosis_result_boxes" >
+<div class="diagnosis_result_box" data-result="S-S" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたのおすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>S</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+  </div>
+</div>
+<div class="diagnosis_result_box" data-result="S-M" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>M</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+  </div>
+</div>
+<div class="diagnosis_result_box" data-result="S-L" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>L</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+
+  </div>
+</div>
+<div class="diagnosis_result_box" data-result="H-S" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>S</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+  </div>
+</div>
+<div class="diagnosis_result_box" data-result="H-M" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>M</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+    
+  </div>
+ 
+</div>
+<div class="diagnosis_result_box" data-result="H-L" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>L</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+    
+  </div>
+
+</div>
+<div class="diagnosis_result_box" data-result="HC-M" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>L</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+    
+  </div>
+</div>
+<div class="diagnosis_result_box" data-result="HC-L" style="display: none;">
+  <div class="diagnosis_result_box--left">
+    <div class="diagnosis_result_box--ttl">
+      あなたへ<br>おすすめのサイズは
+    </div>
+    <div class="diagnosis_result_box--size">
+      <span>L</span>
+      <span>size</span>
+    </div>
+    <div class="diagnosis_result_box--att">
+      こちらのサイズでの人気商品はコチラ
+    </div>
+    
+  </div>
+
+</div>
+  </div>
+</div>
+  <div class="intro-box_brands">
+    <div class="intro-box_brand-boxes" id="diagnosis-result-container">
+      <!-- JSでここに結果カードが追加されます -->
+    </div>
+  </div>
+
+  <!-- テンプレート用（JSで複製して使用） -->
+  <div class="intro-box_brand-box" id="diagnosis-result-template" style="display: none;">
+     <a href="#" class="intro-box_brand__link js-result-link">
+      <div class="intro-box_brand-box__img">
+        <img src="" alt="" class="js-result-image">
+      </div>
+      <div class="intro-box_brand-box__ttl js-result-model-name">
+        <!-- Title -->
+      </div>
+      <div class="intro-box_brand-box__subttl js-result-price">
+        <!-- Price -->
+      </div>
+    </a>
+  </div>
+</div>
+</div>
+<script>
+  // Liquidのブロック設定をJSで使えるようにオブジェクト化
+  window.diagnosisData = {};
+  {% for block in section.blocks %}
+    {% if block.type == 'diagnosis_result' %}
+      {% assign clean_key = block.settings.result_key | strip | upcase %}
+      window.diagnosisData["{{ clean_key }}"] = [
+        {% if block.settings.product != blank %}
+          {
+            "productUrl": {{ block.settings.product.url | json }},
+            "imageSrc": {{ block.settings.image | default: block.settings.product.featured_image | image_url: width: 600 | json }},
+            "title": {{ block.settings.title_1 | default: block.settings.product.title | json }},
+            "price": {{ block.settings.product.price | money_with_currency | json }}
+          },
+        {% endif %}
+        {% if block.settings.product_2 != blank %}
+          {
+            "productUrl": {{ block.settings.product_2.url | json }},
+            "imageSrc": {{ block.settings.image_2 | default: block.settings.product_2.featured_image | image_url: width: 600 | json }},
+            "title": {{ block.settings.title_2 | default: block.settings.product_2.title | json }},
+            "price": {{ block.settings.product_2.price | money_with_currency | json }}
+          },
+        {% endif %}
+        {% if block.settings.product_3 != blank %}
+          {
+            "productUrl": {{ block.settings.product_3.url | json }},
+            "imageSrc": {{ block.settings.image_3 | default: block.settings.product_3.featured_image | image_url: width: 600 | json }},
+            "title": {{ block.settings.title_3 | default: block.settings.product_3.title | json }},
+            "price": {{ block.settings.product_3.price | money_with_currency | json }}
+          },
+        {% endif %}
+      ];
+    {% endif %}
+  {% endfor %}
+  console.log('Diagnosis Data Loaded:', window.diagnosisData);
+</script>
+<script src="{{ 'diagnosis.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "option_block",
+      "name": "選択肢付きブロック",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "タイトル"
+        },
+          {
+        "type": "text",
+        "id": "option_1",
+        "label": "選択肢1",
+        
+      },
+      {
+        "type": "text",
+        "id": "option_2",
+        "label": "選択肢2",
+        
+      },
+      {
+        "type": "text",
+        "id": "option_3",
+        "label": "選択肢3",
+      }
+      ]
+    },
+    {
+      "type": "diagnosis_result",
+      "name": "診断結果設定",
+      "settings": [
+        {
+          "type": "text",
+          "id": "result_key",
+          "label": "結果キー (例: S-S, H-M)",
+          "info": "JSのロジックで判定されるキーと一致させてください"
+        },
+        {
+          "type": "header",
+          "content": "おすすめ商品 1"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "商品"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "画像 (商品画像より優先)"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "表示タイトル (空欄なら商品名)"
+        },
+        {
+          "type": "header",
+          "content": "おすすめ商品 2"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "商品"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "画像"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "表示タイトル"
+        },
+        {
+          "type": "header",
+          "content": "おすすめ商品 3"
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "商品"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "画像"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "表示タイトル"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+    "presets": [
+    {
+      "name": "選択肢ブロック付きセクション",
+      "blocks": [
+        {
+          "type": "option_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  :root {
+    --border-radius: 0px!important;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  /* 2カラム固定のためのスタイル */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    list-style: none;
+    padding: 0;
+    margin-top:2.5rem;
+    margin-bottom:0rem;
+  }
+  @media screen and (max-width: 768px) {
+    .news-grid {
+      grid-template-columns: 1fr; /* スマホでは1列 */
+         margin-top:1.516rem;
+    }
+    .news-grid li:not(:first-child){
+      display:none;
+    }
+  }
+{%- endstyle -%}
+
+<div class="blog section-{{ section.id }}-padding page-width">
+  {%- unless section.settings.heading == blank -%}
+    <h2 class="blog__title {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+  {%- endunless -%}
+
+  <ul class="news-grid"id="this_newses">
+    {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+      {%- for article in section.settings.blog.articles limit: 2 -%}
+        <li>
+          {% render 'article-card',
+            blog: section.settings.blog,
+            article: article,
+            media_aspect_ratio: 1.936,
+            show_image: true,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_excerpt: false
+          %}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+
+  {%- if section.settings.show_view_all -%}
+    <div class="right article_more">
+      <a href="{{ section.settings.blog.url }}" class="article_more_link">SEE ALL ></a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "最新ニュース2件",
+  "tag": "section",
+  "settings": [
+    { "type": "blog", "id": "blog", "label": "ブログを選択" },
+    { "type": "inline_richtext", "id": "heading", "default": "NEWS", "label": "見出し" },
+    { "type": "checkbox", "id": "show_date", "default": true, "label": "日付を表示" },
+    { "type": "checkbox", "id": "show_view_all", "default": true, "label": "もっと見るボタン" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "上パディング", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "下パディング", "default": 36 }
+  ],
+  "presets": [{ "name": "最新ニュース2件" }]
+}
+{% endschema %}

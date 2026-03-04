@@ -1,0 +1,39 @@
+
+{% if section.settings.image_box != blank %}
+  <div class="p-page_top_fv p-page_top_fv--pc">
+<img src="{{ section.settings.image_box | img_url: 'master' }}" alt="{{ section.settings.image_box.alt }}">
+    </div>
+  {% endif %}
+{% if section.settings.image_box_sp != blank %}
+  <div class="p-page_top_fv p-page_top_fv--sp">
+<img src="{{ section.settings.image_box_sp | img_url: 'master' }}" alt="{{ section.settings.image_box_sp.alt }}">
+  </div>
+    {% endif %}
+{% schema %}
+{
+  "name": "ページトップ画像",
+  "class": "section_top_img",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+ "settings": [
+  {
+   "type": "image_picker",
+   "id": "image_box",
+   "label": "画像を選ぶ"
+  },
+  {
+   "type": "image_picker",
+   "id": "image_box_sp",
+   "label": "画像を選ぶ"
+  }
+ ],
+"presets": [
+  {
+    "name": "ページトップ画像",
+    "category": "画像", 
+
+  }
+]
+}
+{% endschema %}

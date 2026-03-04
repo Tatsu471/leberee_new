@@ -1,0 +1,108 @@
+.page-title {
+  margin-top: 0;
+  text-transform:uppercase;
+      margin-bottom: 2rem;
+}
+
+.main-page-title {
+  margin-bottom: 3rem;
+}
+.main-page-title.h0{
+   margin-top: 2rem !important;
+          margin-bottom: 2rem !important;
+              font-weight: 500;
+}
+
+@media screen and (min-width: 769px) {
+  .main-page-title {
+    margin-bottom: 4rem;
+  }
+  .product-intro .main-page-title.h0{
+  margin-bottom:0!Important;
+  font-weight:400;
+}
+  .main-page-title.h0{
+        margin-bottom: 2rem!important;
+  }
+  .main-page-title--faq.h0{
+  margin-bottom:0!important;
+}
+}
+.main-page-title--contact.h0{
+            margin-bottom: 0!important;
+}
+.diagnosis .main-page-title{
+        font-weight:400;
+}
+@media screen and (max-width: 768px) {
+.default .main-page-title
+{
+  margin-top:clamp(2.5400rem, 6.7684vw + 0.0018rem, 5.2000rem);
+  font-size: clamp(2.2600rem, 4.1730vw + -0.0049rem, 3.2000rem);
+  margin-bottom:clamp(2.1500rem, 5.7252vw + 0.0031rem, 3.6000rem)!important;
+}
+.diagnosis .main-page-title{
+    margin-bottom:clamp(2.5400rem, 6.7684vw + 0.0018rem, 5.2000rem)!important;
+        font-size: clamp(2.2600rem, 4.1730vw + -0.0049rem, 3.2000rem);
+        line-height: calc(48 / 36);
+}
+.product-intro .main-page-title{
+  margin-block:clamp(1.5600rem, 4.1730vw + -0.0049rem, 3.2000rem)!important;
+  padding-inline:clamp(1.5600rem, 4.1730vw + -0.0049rem, 3.2000rem)!important;
+    font-weight:400;
+}
+.default .rte p,.default .rte li,.default .rte a{
+      font-size:clamp(1.200rem, 3.2865vw + -0.0024rem, 1.6000rem);
+}
+.default .rte {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .default .rte img,
+  .default .rte iframe,
+  .default .rte video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+
+  .default .rte table {
+    display: block !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .default .rte table td,
+  .default .rte table th {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .default .main-page-title+.rte {
+    padding-block: clamp(1.9500rem, 5.2163vw + -0.0061rem, 4.0000rem);
+
+  }
+
+.page-title {
+font-size: clamp(22.5px, 4.6875vw, 36px);
+}
+  .page-title--about{
+  margin-bottom:clamp(2.5400rem, 6.7684vw + 0.0018rem, 5.2000rem);
+}
+}
+.page-placeholder-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.page-placeholder {
+  width: 52.5rem;
+  height: 52.5rem;
+}

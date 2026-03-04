@@ -1,0 +1,102 @@
+.blog-placeholder-svg {
+  height: 100%;
+}
+
+@media screen and (min-width: 990px) {
+  .grid--1-col-desktop .article-card .card__content {
+    text-align: center;
+  }
+}
+
+.blog__title {
+  margin: 0;
+  font-size:2rem;
+}
+
+.blog__posts.articles-wrapper {
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .blog__posts.articles-wrapper {
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .article-card .card__heading .full-unstyled-link{
+    font-size: clamp(12px, 3.117vw + 0.061px, 24px);
+  }
+  .blog__posts.articles-wrapper {
+    margin-bottom: 0;
+        flex-direction: column;
+    gap:1.6rem;
+  }
+   .blog .slider-mobile-gutter .blog__posts.articles-wrapper li{
+      padding-top:0;
+      padding-bottom:0;
+      margin-left: 1.6rem;
+      margin-right: 1.6rem;
+  
+    }
+   .blog .slider-mobile-gutter .blog__posts.articles-wrapper li .card.article-card .card__information{
+        flex-direction: column;
+     gap: .4rem;
+   }
+  .blog__view-all{
+    display:block!important;
+  }
+  .slider-mobile-gutter .slider-buttons{
+    display:none;
+  }
+  .blog__view-all a.blog__button.button{
+background: transparent;
+    border: none;
+    color: #939393;
+    margin-left: auto;
+    display: block;
+    width: auto;
+    font-size: 1.2rem;
+    text-align: right;
+    margin-top: 1.6rem;
+  }
+    .blog__view-all a.blog__button.button::before,
+    .blog__view-all a.blog__button.button::after{
+      display:none;
+    }
+}
+.blog__posts.articles-wrapper .article {
+  scroll-snap-align: start;
+}
+
+@media screen and (max-width: 749px) {
+  .blog__post.article {
+    width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+  }
+}
+
+.background-secondary .blog-placeholder__content {
+  background-color: rgb(var(--color-background));
+}
+
+.blog__posts .card-wrapper {
+  width: 100%;
+}
+
+.blog__button {
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 750px) {
+  .blog__button {
+    margin-top: 5rem;
+  }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+  @media screen and (min-width: 750px) {
+    .blog__posts .article + .article {
+      margin-left: var(--grid-desktop-horizontal-spacing);
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.pagination-wrapper {
+  margin-top: 6rem;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination-wrapper {
+    margin-top: 8rem;
+  }
+}
+
+.pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination__list > li {
+  flex: 1 0 4.4rem;
+  max-width:max-content;
+}
+.pagination__item--prev span.svg-wrapper,
+.pagination__item--next span.svg-wrapper{
+  width:auto;
+  height:initial;
+}
+.pagination__list > li:not(:last-child) {
+  margin-right: 2.2rem;
+}
+.pagination__list > li:has(.pagination__item--next) {
+  margin-right: 3.4rem;
+}
+.pagination__list > li:has(.pagination__item--prev) {
+  margin-left: 1.1rem;
+}
+@media screen and (min-width: 768px) {
+.pagination__list > li:not(:last-child) {
+  margin-right: 2.4rem;
+}
+  .pagination__list > li:has(.pagination__item--next) {
+  margin-right: 4rem;
+}
+.pagination__list > li:has(.pagination__item--prev) {
+  margin-left: .8rem;
+}
+}
+.pagination__item {
+  color: #939393;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-size: 1.2rem;
+  line-height: calc(19 / 16);
+  width: 100%;
+  padding: 0;
+  text-decoration: none;
+}
+.pagination__item--current,.pagination__item--prev,.pagination__item--next{
+    color: #232323;
+}
+
+a.pagination__item:hover::after {
+  height: 0.1rem;
+}
+
+.pagination__item .icon-caret {
+  height: 0.6rem;
+}
+
+.pagination__item--current::after {
+  height: 0.1rem;
+}
+
+.pagination__item--current::after,
+.pagination__item:hover::after {
+  content: '';
+  display: block;
+  width: 2rem;
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: currentColor;
+}
+
+.pagination__item--next .icon {
+  margin-left: -0.2rem;
+  transform: rotate(90deg);
+}
+
+.pagination__item--next:hover .icon {
+  transform: rotate(90deg) scale(1.07);
+}
+
+.pagination__item--prev .icon {
+  margin-right: -0.2rem;
+  transform: rotate(-90deg);
+}
+
+.pagination__item--prev:hover .icon {
+  transform: rotate(-90deg) scale(1.07);
+}
+
+.pagination__item-arrow:hover::after {
+  display: none;
+}

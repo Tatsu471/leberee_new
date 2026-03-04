@@ -1,0 +1,34 @@
+{% comment %}
+  Renders product variant-picker
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} Id of the product form to which the variant picker is associated.
+  Usage:
+  {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+{% endcomment %}
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section.id }}"
+    data-section="{{ section.id }}"
+    data-url="{{ product.url }}"
+    {{ block.shopify_attributes }}
+  >
+    
+      {%- liquid
+        # Cleaned up logic: product-variant-options.liquid handles the table generation.
+        # Just render it directly.
+      -%}
+      <fieldset class="js product-form__input product-form__input--spp product-form__input--pill">
+        {% render 'product-variant-options',
+          product: product,
+          block: block
+        %}
+      </fieldset>
+
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </variant-selects>
+{%- endunless -%}
