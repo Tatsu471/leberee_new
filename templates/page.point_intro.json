@@ -1,1 +1,317 @@
-{"sections":{"point_intro-page":{"type":"point_intro","blocks":{"content_block_Gwj8Pt":{"type":"content_block","settings":{"heading":"lebereeランク制度・ポイント制度のご案内","heading_alignment":"center","heading_font_size":29,"heading_margin_top":20,"heading_margin_bottom":76,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":8,"subheading_margin_bottom":12,"description":"lebereeでは、お客様への感謝の気持ちを込めて、\n「ランク制度」と「ポイント制度」 を新たに導入いたします。","reverse_text_image":true,"alignment":"center","description_color":"#333333","description_font_size":21,"description_margin_top":48,"description_margin_bottom":20,"image":"shopify:\/\/shop_images\/point_img1.png","image_alignment":"center","custom_html":""}},"content_block_r7hWg3":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":12,"heading_margin_top":0,"heading_margin_bottom":0,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":0,"subheading_margin_bottom":0,"description":"※2つの制度につきましては、必ず会員登録が必要となりますので、\n下記の「会員登録のお願い」をご参照の上、登録をお願いいたします。","reverse_text_image":false,"alignment":"center","description_color":"#ff0000","description_font_size":15,"description_margin_top":0,"description_margin_bottom":56,"image_alignment":"center","custom_html":""}},"content_block_YxmGeW":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":24,"heading_margin_top":20,"heading_margin_bottom":12,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":8,"subheading_margin_bottom":12,"description":"","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":16,"description_margin_top":8,"description_margin_bottom":12,"image_alignment":"center","custom_html":""}},"content_block_NqcwBN":{"type":"content_block","settings":{"heading":"ランク制度","heading_alignment":"left","heading_font_size":28,"heading_margin_top":0,"heading_margin_bottom":20,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":0,"subheading_margin_bottom":0,"description":"年間のご購入金額に応じて、常時割引や送料無料の特典をご用意いたしました。\n初回ご購入日から1年間の累計金額でランクが決定し、翌年にリセットされます。","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":16,"description_margin_top":8,"description_margin_bottom":0,"image_alignment":"center","custom_html":""}},"content_block_WxaPi7":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":24,"heading_margin_top":0,"heading_margin_bottom":0,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":0,"subheading_margin_bottom":0,"description":"","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":16,"description_margin_top":0,"description_margin_bottom":0,"image_alignment":"center","custom_html":"<table>\n  <tbody>\n    <tr>\n      <th>ランク<\/th>\n      <td>条件<\/td>\n      <td>特典<\/td>\n    <\/tr>\n    <tr>\n      <td>SSランク<\/td>\n      <td>年間10万円以上<\/td>\n      <td>常時20%OFF \/ 送料無料<\/td>\n    <\/tr>\n    <tr>\n      <td>Sランク<\/td>\n      <td>年間5万円以上<\/td>\n      <td>常時10%OFF \/ 送料無料<\/td>\n    <\/tr>\n    <tr>\n      <td>Aランク<\/td>\n      <td>年間3万円以上購入<\/td>\n      <td>常時5%OFF \/ 送料750円(1万円以上で送料無料)\n<\/td>\n    <\/tr>\n    <tr>\n      <td>Bランク<\/td>\n      <td>年間1万円以上購入<\/td>\n      <td>割引なし \/ 送料750円(1万円以上で送料無料)<\/td>\n    <\/tr>\n  <\/tbody>\n<\/table>\n<style>\ntable , td, th {\n\tborder: 1px solid #595959;\n\tborder-collapse: collapse;\n}\ntd, th {\n\tpadding: 3px;\n}\nth {\n\n}\n.even {\n\tbackground: #fbf8f0;\n}\n.odd {\n\tbackground: #fefcf9;\n}\n@media screen and (max-width:768px){\ntable{\noverflow-x:scroll;\nwidth:145%;\n}\n.block-html:has(table){\n    overflow-x: scroll;\n    padding-block: 10px;\npadding-inline:10px;\n}\n}\n<\/style>"}},"content_block_KRqjFE":{"type":"content_block","settings":{"heading":"ポイント制度","heading_alignment":"left","heading_font_size":30,"heading_margin_top":92,"heading_margin_bottom":32,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":0,"subheading_margin_bottom":12,"description":"すべてのお買い物に対し、ご購入金額の2％をポイント還元いたします。貯まったポイントは、次回以降のお買い物より1円単位でご利用可能です。\n※送料は加味しませんので、ご了承ください。\n※還元後の金額が端数の場合は、\"切り捨て\"の計算となります。","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":16,"description_margin_top":8,"description_margin_bottom":12,"image":"shopify:\/\/shop_images\/rank.png","image_alignment":"center","custom_html":""}},"content_block_RWfTiR":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":24,"heading_margin_top":20,"heading_margin_bottom":12,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":8,"subheading_margin_bottom":12,"description":"","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":16,"description_margin_top":8,"description_margin_bottom":12,"image_alignment":"center","custom_html":""}},"content_block_aBamWG":{"type":"content_block","settings":{"heading":"会員登録のお願い","heading_alignment":"left","heading_font_size":30,"heading_margin_top":76,"heading_margin_bottom":40,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":8,"subheading_margin_bottom":12,"description":"２つの制度の適用条件としまして、会員登録が必要です。\n会員登録をされていない場合（ゲスト購入）には、ランク制度・ポイント制度の特典は適用されませんので、ぜひこの機会にご登録くださいませ。","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":18,"description_margin_top":8,"description_margin_bottom":0,"image_alignment":"center","custom_html":""}},"content_block_rhGMTb":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":24,"heading_margin_top":0,"heading_margin_bottom":0,"subheading":"","enable_arrow":false,"subheading_alignment":"left","subheading_font_size":18,"subheading_margin_top":0,"subheading_margin_bottom":0,"description":"※2025年8月27日より上記新制度導入に伴い、それまでのお客様データはリセットさせていただきました。そのため、大変お手数をおかけいたしますが、改めて会員登録をお願い申し上げます。\n\n※ゲスト購入後にランクやポイントを付与することがシステム上できかねます為、必ず会員登録後に商品のご購入をお願いいたします。","reverse_text_image":false,"alignment":"left","description_color":"#ff0000","description_font_size":16,"description_margin_top":0,"description_margin_bottom":16,"image_alignment":"center","custom_html":"<div class=\"registration_link_box\"><a href=\"https:\/\/leberee.net\/account\/login\" class=\"registration_link_box_link\"><span class=\"registration_link_box_link_text\">会員登録はこちら<\/span><\/a><\/div>"}},"content_block_zNYUGy":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":24,"heading_margin_top":0,"heading_margin_bottom":0,"subheading":"ランク・ポイントの確認方法","enable_arrow":true,"subheading_alignment":"left","subheading_font_size":21,"subheading_margin_top":8,"subheading_margin_bottom":16,"description":"会員登録後、商品のご購入をしていただくと、マイページにてお客様の現在のランク・ポイントが表示されます。","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":18,"description_margin_top":8,"description_margin_bottom":20,"image":"shopify:\/\/shop_images\/SP.png","image_alignment":"center","custom_html":""}},"content_block_3PAVHz":{"type":"content_block","settings":{"heading":"","heading_alignment":"left","heading_font_size":22,"heading_margin_top":0,"heading_margin_bottom":0,"subheading":"割引表示について","enable_arrow":true,"subheading_alignment":"left","subheading_font_size":21,"subheading_margin_top":8,"subheading_margin_bottom":44,"description":"ランク制度に伴う、合計金額の割引は各決済方法のチェックアウト画面に表示されます。","reverse_text_image":false,"alignment":"left","description_color":"#333333","description_font_size":18,"description_margin_top":0,"description_margin_bottom":20,"image":"shopify:\/\/shop_images\/point_img4.png","image_alignment":"center","custom_html":""}}},"block_order":["content_block_Gwj8Pt","content_block_r7hWg3","content_block_YxmGeW","content_block_NqcwBN","content_block_WxaPi7","content_block_KRqjFE","content_block_RWfTiR","content_block_aBamWG","content_block_rhGMTb","content_block_zNYUGy","content_block_3PAVHz"],"settings":{"padding_top":0,"padding_bottom":0}}},"order":["point_intro-page"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "point_intro-page": {
+      "type": "point_intro",
+      "blocks": {
+        "content_block_Gwj8Pt": {
+          "type": "content_block",
+          "settings": {
+            "heading": "lebereeランク制度・ポイント制度のご案内",
+            "heading_alignment": "left",
+            "heading_font_size": 29,
+            "heading_margin_top": 20,
+            "heading_margin_bottom": 76,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 12,
+            "description": "lebereeでは、お客様への感謝の気持ちを込めて、\n「ランク制度」と「ポイント制度」 を新たに導入いたします。",
+            "reverse_text_image": true,
+            "alignment": "center",
+            "description_color": "#333333",
+            "description_font_size": 21,
+            "description_margin_top": 48,
+            "description_margin_bottom": 20,
+            "image": "shopify://shop_images/point_img1.png",
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_r7hWg3": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 12,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 0,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 0,
+            "subheading_margin_bottom": 0,
+            "description": "※2つの制度につきましては、必ず会員登録が必要となりますので、\n下記の「会員登録のお願い」をご参照の上、登録をお願いいたします。",
+            "reverse_text_image": false,
+            "alignment": "center",
+            "description_color": "#ff0000",
+            "description_font_size": 15,
+            "description_margin_top": 0,
+            "description_margin_bottom": 56,
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_YxmGeW": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 24,
+            "heading_margin_top": 20,
+            "heading_margin_bottom": 12,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 12,
+            "description": "",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 16,
+            "description_margin_top": 8,
+            "description_margin_bottom": 12,
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_NqcwBN": {
+          "type": "content_block",
+          "settings": {
+            "heading": "ランク制度",
+            "heading_alignment": "left",
+            "heading_font_size": 28,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 20,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 0,
+            "subheading_margin_bottom": 0,
+            "description": "年間のご購入金額に応じて、常時割引や送料無料の特典をご用意いたしました。\n初回ご購入日から1年間の累計金額でランクが決定し、翌年にリセットされます。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 16,
+            "description_margin_top": 8,
+            "description_margin_bottom": 0,
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_WxaPi7": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 24,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 0,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 0,
+            "subheading_margin_bottom": 0,
+            "description": "",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 16,
+            "description_margin_top": 0,
+            "description_margin_bottom": 0,
+            "image_alignment": "center",
+            "custom_html": "<table>\n  <tbody>\n    <tr>\n      <th>ランク</th>\n      <td>条件</td>\n      <td>特典</td>\n    </tr>\n    <tr>\n      <td>SSランク</td>\n      <td>年間10万円以上</td>\n      <td>常時20%OFF / 送料無料</td>\n    </tr>\n    <tr>\n      <td>Sランク</td>\n      <td>年間5万円以上</td>\n      <td>常時10%OFF / 送料無料</td>\n    </tr>\n    <tr>\n      <td>Aランク</td>\n      <td>年間3万円以上購入</td>\n      <td>常時5%OFF / 送料750円(1万円以上で送料無料)\n</td>\n    </tr>\n    <tr>\n      <td>Bランク</td>\n      <td>年間1万円以上購入</td>\n      <td>割引なし / 送料750円(1万円以上で送料無料)</td>\n    </tr>\n  </tbody>\n</table>\n<style>\ntable , td, th {\n\tborder: 1px solid #595959;\n\tborder-collapse: collapse;\n}\ntd, th {\n\tpadding: 3px;\n}\nth {\n\n}\n.even {\n\tbackground: #fbf8f0;\n}\n.odd {\n\tbackground: #fefcf9;\n}\n@media screen and (max-width:768px){\ntable{\noverflow-x:scroll;\nwidth:145%;\n}\n.block-html:has(table){\n    overflow-x: scroll;\n    padding-block: 10px;\npadding-inline:10px;\n}\n}\n</style>"
+          }
+        },
+        "content_block_KRqjFE": {
+          "type": "content_block",
+          "settings": {
+            "heading": "ポイント制度",
+            "heading_alignment": "left",
+            "heading_font_size": 30,
+            "heading_margin_top": 92,
+            "heading_margin_bottom": 32,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 0,
+            "subheading_margin_bottom": 12,
+            "description": "すべてのお買い物に対し、ご購入金額の2％をポイント還元いたします。貯まったポイントは、次回以降のお買い物より1円単位でご利用可能です。\n※送料は加味しませんので、ご了承ください。\n※還元後の金額が端数の場合は、\"切り捨て\"の計算となります。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 16,
+            "description_margin_top": 8,
+            "description_margin_bottom": 12,
+            "image": "shopify://shop_images/rank.png",
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_RWfTiR": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 24,
+            "heading_margin_top": 20,
+            "heading_margin_bottom": 12,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 12,
+            "description": "",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 16,
+            "description_margin_top": 8,
+            "description_margin_bottom": 12,
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_aBamWG": {
+          "type": "content_block",
+          "settings": {
+            "heading": "会員登録のお願い",
+            "heading_alignment": "left",
+            "heading_font_size": 30,
+            "heading_margin_top": 76,
+            "heading_margin_bottom": 40,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 12,
+            "description": "２つの制度の適用条件としまして、会員登録が必要です。\n会員登録をされていない場合（ゲスト購入）には、ランク制度・ポイント制度の特典は適用されませんので、ぜひこの機会にご登録くださいませ。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 18,
+            "description_margin_top": 8,
+            "description_margin_bottom": 0,
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_rhGMTb": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 24,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 0,
+            "subheading": "",
+            "enable_arrow": false,
+            "subheading_alignment": "left",
+            "subheading_font_size": 18,
+            "subheading_margin_top": 0,
+            "subheading_margin_bottom": 0,
+            "description": "※2025年8月27日より上記新制度導入に伴い、それまでのお客様データはリセットさせていただきました。そのため、大変お手数をおかけいたしますが、改めて会員登録をお願い申し上げます。\n\n※ゲスト購入後にランクやポイントを付与することがシステム上できかねます為、必ず会員登録後に商品のご購入をお願いいたします。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#ff0000",
+            "description_font_size": 16,
+            "description_margin_top": 0,
+            "description_margin_bottom": 16,
+            "image_alignment": "center",
+            "custom_html": "<div class=\"registration_link_box\"><a href=\"https://leberee.net/account/login\" class=\"registration_link_box_link\"><span class=\"registration_link_box_link_text\">会員登録はこちら</span></a></div>"
+          }
+        },
+        "content_block_zNYUGy": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 24,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 0,
+            "subheading": "ランク・ポイントの確認方法",
+            "enable_arrow": true,
+            "subheading_alignment": "left",
+            "subheading_font_size": 21,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 16,
+            "description": "会員登録後、商品のご購入をしていただくと、マイページにてお客様の現在のランク・ポイントが表示されます。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 18,
+            "description_margin_top": 8,
+            "description_margin_bottom": 20,
+            "image": "shopify://shop_images/SP.png",
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        },
+        "content_block_3PAVHz": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "heading_alignment": "left",
+            "heading_font_size": 22,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 0,
+            "subheading": "割引表示について",
+            "enable_arrow": true,
+            "subheading_alignment": "left",
+            "subheading_font_size": 21,
+            "subheading_margin_top": 8,
+            "subheading_margin_bottom": 44,
+            "description": "ランク制度に伴う、合計金額の割引は各決済方法のチェックアウト画面に表示されます。",
+            "reverse_text_image": false,
+            "alignment": "left",
+            "description_color": "#333333",
+            "description_font_size": 18,
+            "description_margin_top": 0,
+            "description_margin_bottom": 20,
+            "image": "shopify://shop_images/point_img4.png",
+            "image_alignment": "center",
+            "custom_html": ""
+          }
+        }
+      },
+      "block_order": [
+        "content_block_Gwj8Pt",
+        "content_block_r7hWg3",
+        "content_block_YxmGeW",
+        "content_block_NqcwBN",
+        "content_block_WxaPi7",
+        "content_block_KRqjFE",
+        "content_block_RWfTiR",
+        "content_block_aBamWG",
+        "content_block_rhGMTb",
+        "content_block_zNYUGy",
+        "content_block_3PAVHz"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "point_intro-page"
+  ]
+}
